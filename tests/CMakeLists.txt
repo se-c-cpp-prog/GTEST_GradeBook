@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 find_package(GTest CONFIG REQUIRED)
 
-add_executable(GradeBook_tests main.cpp
+add_executable(GradeBook_tests test_main.cpp
                                 test_Student.cpp
 )
 
