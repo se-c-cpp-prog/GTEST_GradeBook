@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 
+// 1, Unit - часть кода -> класс, изоляция unitов
+// 2. Unit - единица поведения -> тест атомарный факт, изоляция тестов
+
 class Student
 {
   private:
@@ -17,7 +20,10 @@ class Student
 	int getId() const;
 	std::vector< int > getGrades() const;
 
-	void addGrade(int grade);
+	// Получение средней оценки
 	double getAverage() const;
+	// Добавление оценки
+	void addGrade(int grade);
+	// Закрылся ли студент (60>=)
 	bool hasPassingGrade() const;
 };

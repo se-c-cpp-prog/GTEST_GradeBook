@@ -2,8 +2,6 @@
 
 #include "student.h"
 
-#include <algorithm>
-
 Course::Course(const std::string &name, const std::string &code) : name_(name), code_(code) {}
 
 std::string Course::getName() const
@@ -31,17 +29,30 @@ void Course::enrollStudent(Student *student)
 
 void Course::removeStudent(int studentId)
 {
-	students_.erase(
-		std::remove_if(students_.begin(), students_.end(), [studentId](Student *s) { return s->getId() == studentId; }),
-		students_.end());
+	for (size_t i = 0; i < students_.size(); i++)
+	{
+		if (students_[i]->getId() == studentId)
+		{
+			students_.erase(students_.begin() + i);
+			return;
+		}
+	}
 }
 
-int Course::getStudentCount() const
+size_t Course::getStudentCount() const
 {
-	return static_cast< int >(students_.size());
+	return students_.size();
 }
 
 bool Course::hasStudent(int studentId) const
 {
-	return std::any_of(students_.begin(), students_.end(), [studentId](Student *s) { return s->getId() == studentId; });
+	for (size_t i = 0; i < students_.size(); i++)
+	{
+		if (students_[i]->getId() == studentId)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

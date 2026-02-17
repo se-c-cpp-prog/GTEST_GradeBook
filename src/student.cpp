@@ -1,8 +1,5 @@
 #include "student.h"
 
-#include <algorithm>
-#include <numeric>
-
 Student::Student(const std::string &name, int id) : name_(name), id_(id) {}
 
 std::string Student::getName() const
@@ -31,7 +28,14 @@ double Student::getAverage() const
 	{
 		return 0.0;
 	}
-	return static_cast< double >(std::accumulate(grades_.begin(), grades_.end(), 0)) / grades_.size();
+
+	double sum = 0;
+	for (size_t i = 0; i < grades_.size(); i++)
+	{
+		sum += grades_[i];
+	}
+
+	return sum / grades_.size();
 }
 
 bool Student::hasPassingGrade() const

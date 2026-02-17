@@ -21,6 +21,6 @@ class Course
 
 	void enrollStudent(Student *student);
 	void removeStudent(int studentId);
-	int getStudentCount() const;
+	size_t getStudentCount() const;
 	bool hasStudent(int studentId) const;
 };
